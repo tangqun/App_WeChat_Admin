@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{34B942A7-0852-49F0-9E86-2B0857B36C7D}</ProjectGuid>
+    <ProjectGuid>{3E367A8F-C346-4683-9E66-3CE63324467C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Manage_9H</RootNamespace>
-    <AssemblyName>Manage_9H</AssemblyName>
+    <RootNamespace>Web_9H</RootNamespace>
+    <AssemblyName>Web_9H</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -64,6 +64,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Webdiyer.MvcPager, Version=3.0.2015.802, Culture=neutral, PublicKeyToken=f6872c5a09aed72c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Webdiyer.MvcPager.3.0.1.1\lib\Webdiyer.MvcPager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -89,11 +93,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\fix.css" />
     <Content Include="Global.asax" />
+    <Content Include="img\base_z3560fc.png" />
+    <Content Include="img\icon_menu_function.png" />
+    <Content Include="img\icon_menu_management.png" />
+    <Content Include="plugins\bootstrap-3.3.7\css\bootstrap-theme.css" />
+    <Content Include="plugins\bootstrap-3.3.7\css\bootstrap-theme.min.css" />
+    <Content Include="plugins\bootstrap-3.3.7\css\bootstrap.css" />
+    <Content Include="plugins\bootstrap-3.3.7\css\bootstrap.min.css" />
+    <Content Include="plugins\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="plugins\bootstrap-3.3.7\js\bootstrap.js" />
+    <Content Include="plugins\bootstrap-3.3.7\js\bootstrap.min.js" />
+    <Content Include="plugins\bootstrap-3.3.7\js\npm.js" />
+    <Content Include="plugins\font-awesome\css\font-awesome.css" />
+    <Content Include="plugins\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="plugins\jquery-2.2.4\jquery.js" />
+    <Content Include="plugins\jquery-2.2.4\jquery.min.js" />
+    <Content Include="plugins\jquery-ajax-unobtrusive\jquery.unobtrusive-ajax.js" />
+    <Content Include="plugins\jquery-ajax-unobtrusive\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -102,6 +126,24 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="plugins\bootstrap-3.3.7\css\bootstrap-theme.css.map" />
+    <Content Include="plugins\bootstrap-3.3.7\css\bootstrap-theme.min.css.map" />
+    <Content Include="plugins\bootstrap-3.3.7\css\bootstrap.css.map" />
+    <Content Include="plugins\bootstrap-3.3.7\css\bootstrap.min.css.map" />
+    <Content Include="plugins\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="plugins\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="plugins\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="plugins\bootstrap-3.3.7\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="plugins\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="plugins\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="plugins\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="plugins\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="plugins\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="plugins\jquery-2.2.4\jquery.min.map" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\List.cshtml" />
+    <Content Include="Views\User\_AjaxSearchPost.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -111,8 +153,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL_9H\BLL_9H.csproj">
+      <Project>{3b2b5c63-9a4b-4e11-82a3-a18624f72e40}</Project>
+      <Name>BLL_9H</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IBLL_9H\IBLL_9H.csproj">
+      <Project>{4ffeb7f7-0879-4411-99c5-b938f0bf6933}</Project>
+      <Name>IBLL_9H</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model_9H\Model_9H.csproj">
+      <Project>{1767c2c9-9135-43b4-a2e1-4da47e1a4e29}</Project>
+      <Name>Model_9H</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -127,9 +182,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4198</DevelopmentServerPort>
+          <DevelopmentServerPort>24017</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4198/</IISUrl>
+          <IISUrl>http://localhost:24017/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,0 +1,49 @@
+﻿@model PagedList<Model_9H.UserInfoModel>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th class="nowrap">序号</th>
+        <th>手机号</th>
+        <th>真实姓名</th>
+        <th>用户状态</th>
+        <th>登陆失败次数</th>
+        <th>注册时间</th>
+        <th>最后操作时间</th>
+    </tr>
+    @if (Model != null && Model.Any())
+    {
+        int i = 0;
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@(Model.StartItemIndex + i++)</td>
+                <td>@item.Mobile</td>
+                <td>@item.RealName</td>
+                <td>@item.UserStat</td>
+                <td>@item.LoginErrorTimes</td>
+                <td>@item.CreateTime</td>
+                <td>@item.UpdateTime</td>
+            </tr>
+        }
+    }
+</table>
+<div class="pagination-box">
+    @Ajax.Pager(Model,
+                new PagerOptions
+                {
+                    ContainerTagName = "ul",
+                    CssClass = "pagination pagination-inner",
+                    CurrentPagerItemTemplate = "<li class=\"active\"><a href=\"#\">{0}</a></li>",
+                    DisabledPagerItemTemplate = "<li class=\"disabled\"><a>{0}</a></li>",
+                    PagerItemTemplate = "<li>{0}</li>",
+                    AutoHide = true,
+                    HtmlAttributes = new Dictionary<string, object> { { "style", "float:right" } }
+                },
+                new MvcAjaxOptions
+                {
+                    UpdateTargetId = "js_view",
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "POST",
+                    DataFormId = "searchForm"
+                })
+</div>

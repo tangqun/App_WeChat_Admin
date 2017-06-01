@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列特性集
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("Manage_9H")]
+[assembly: AssemblyTitle("Web_9H")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Manage_9H")]
+[assembly: AssemblyProduct("Web_9H")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于 typelib 的 ID
-[assembly: Guid("34b942a7-0852-49f0-9e86-2b0857b36c7d")]
+[assembly: Guid("3e367a8f-c346-4683-9e66-3ce63324467c")]
 
 // 程序集的版本信息由下列四个值组成:
 //

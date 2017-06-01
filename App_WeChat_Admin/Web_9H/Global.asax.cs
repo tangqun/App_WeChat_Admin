@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Manage_9H
+namespace Web_9H
 {
     public class MvcApplication : System.Web.HttpApplication
     {

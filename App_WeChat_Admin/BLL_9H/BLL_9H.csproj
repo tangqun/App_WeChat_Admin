@@ -38,9 +38,39 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Webdiyer.MvcPager, Version=3.0.2015.802, Culture=neutral, PublicKeyToken=f6872c5a09aed72c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Webdiyer.MvcPager.3.0.1.1\lib\Webdiyer.MvcPager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserInfoBLL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL_9H\DAL_9H.csproj">
+      <Project>{3c462eb4-02ca-43c9-9d70-166a567ab87f}</Project>
+      <Name>DAL_9H</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper_9H\Helper_9H.csproj">
+      <Project>{7fb9514a-7f9b-414f-88dc-865ab586ac08}</Project>
+      <Name>Helper_9H</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IBLL_9H\IBLL_9H.csproj">
+      <Project>{4ffeb7f7-0879-4411-99c5-b938f0bf6933}</Project>
+      <Name>IBLL_9H</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDAL_9H\IDAL_9H.csproj">
+      <Project>{d6ac9cfb-dfc5-40b5-95e3-79b95ac1518a}</Project>
+      <Name>IDAL_9H</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model_9H\Model_9H.csproj">
+      <Project>{1767c2c9-9135-43b4-a2e1-4da47e1a4e29}</Project>
+      <Name>Model_9H</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
