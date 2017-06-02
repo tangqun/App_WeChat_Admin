@@ -9,6 +9,7 @@
         <th>登陆失败次数</th>
         <th>注册时间</th>
         <th>最后操作时间</th>
+        <th>操作</th>
     </tr>
     @if (Model != null && Model.Any())
     {
@@ -23,6 +24,7 @@
                 <td>@item.LoginErrorTimes</td>
                 <td>@item.CreateTime</td>
                 <td>@item.UpdateTime</td>
+                <td><a class="btn btn-default btn-xs" href="#" role="button">查看绑定的公众号</a></td>
             </tr>
         }
     }

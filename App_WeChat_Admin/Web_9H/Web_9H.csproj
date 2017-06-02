@@ -93,6 +93,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\card.css" />
     <Content Include="css\fix.css" />
     <Content Include="Global.asax" />
     <Content Include="img\base_z3560fc.png" />
@@ -112,11 +113,30 @@
     <Content Include="plugins\jquery-2.2.4\jquery.min.js" />
     <Content Include="plugins\jquery-ajax-unobtrusive\jquery.unobtrusive-ajax.js" />
     <Content Include="plugins\jquery-ajax-unobtrusive\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\change-log.txt" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\Instructions.txt" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\jquery.uploadifive.js" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\jquery.uploadifive.min.js" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\license-standard.txt" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\Sample\jquery.min.js" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\Sample\jquery.uploadifive.min.js" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\Sample\uploadifive-cancel.png" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\Sample\uploadifive.css" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\uploadifive-cancel.png" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\uploadifive.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\App\AppAreaRegistration.cs" />
+    <Compile Include="Areas\App\Controllers\AppBaseController.cs" />
+    <Compile Include="Areas\App\Controllers\CardController.cs" />
+    <Compile Include="Areas\App\Controllers\HomeController.cs" />
+    <Compile Include="Areas\App\Controllers\MaterialController.cs" />
+    <Compile Include="Controllers\AuthorizerController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Areas\App\Controllers\MediaController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -144,6 +164,19 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\_AjaxSearchPost.cshtml" />
+    <Content Include="Areas\App\Views\web.config" />
+    <Content Include="Areas\App\Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Authorizer\List.cshtml" />
+    <Content Include="Areas\App\Views\Card\MemberAdd.cshtml" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\check-exists.php" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\index.php" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\Sample\check-exists.php" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\Sample\index.php" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\Sample\uploadifive-image-only.php" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\Sample\uploadifive.php" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\uploadifive-image-only.php" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\uploadifive.php" />
+    <Content Include="plugins\uploadifive-v1.2.2-standard\__MACOSX\Sample\._.DS_Store" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -153,12 +186,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\App\Models\" />
+    <Folder Include="Areas\App\Views\AppBase\" />
+    <Folder Include="Areas\App\Views\Home\" />
+    <Folder Include="Areas\App\Views\Material\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL_9H\BLL_9H.csproj">
       <Project>{3b2b5c63-9a4b-4e11-82a3-a18624f72e40}</Project>
       <Name>BLL_9H</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper_9H\Helper_9H.csproj">
+      <Project>{7FB9514A-7F9B-414F-88DC-865AB586AC08}</Project>
+      <Name>Helper_9H</Name>
     </ProjectReference>
     <ProjectReference Include="..\IBLL_9H\IBLL_9H.csproj">
       <Project>{4ffeb7f7-0879-4411-99c5-b938f0bf6933}</Project>

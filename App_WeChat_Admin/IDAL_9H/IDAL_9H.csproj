@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAccessTokenDAL.cs" />
+    <Compile Include="IAuthorizerInfoDAL.cs" />
+    <Compile Include="ICodeMsgDAL.cs" />
     <Compile Include="IUserInfoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,0 +1,88 @@
+﻿
+@{
+    Layout = "~/Areas/App/Views/Shared/_Layout.cshtml";
+}
+
+@section css {
+    <link href="../../../../plugins/uploadifive-v1.2.2-standard/uploadifive.css" rel="stylesheet" />
+    <link href="../../../../css/card.css" rel="stylesheet" />
+}
+
+<div class="main-hd">
+    <h2>会员卡</h2>
+    <div class="tab-box">
+        <ul class="tab-inner">
+            <li class="tab-item">
+                <a href="javascript:;">优惠券</a>
+            </li>
+            <li class="tab-item active">
+                <a href="/app/card/index">会员卡</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="main-bd">
+    @*<div class="sub-title-box">
+            <div class="sub-title-inner">
+                <div class="sub-title-left">
+                    <p><span>会员卡状态</span><span>已投放</span></p>
+                    <p><span>会员卡ID</span><span>p78OJv_vDkMNdB1xW8B6REvUWRVw</span></p>
+                </div>
+                <div class="sub-title-right">
+                    <button type="button" class="btn btn-default">修改</button>
+                </div>
+            </div>
+        </div>*@
+    <div class="edit-box">
+        <div class="edit-inner">
+            @using (Ajax.BeginForm("", null, new AjaxOptions() { HttpMethod = "POST" }, new { @class = "form-horizontal" }))
+            {
+                <div class="edit-section">
+                    <h3>基本信息</h3>
+                    <div class="form-group">
+                        <label class="col-sm-2">商户</label>
+                        <div class="col-sm-10">
+                            <p>九合天下测试号02</p>
+                            <p><img src="https://mmbiz.qlogo.cn/mmbiz_png/jTItpJe45JL4n4gS1FSI9cOBLH6VDLTZS5ckwGcmV1QYAxp4ZFXG5C8gmbLajPmJAHMdViaiaicD4YWX6nF5dlxPw/0?wx_fmt=png" alt="" class="brand-img" /></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">卡券封面</label>
+                        <div class="col-sm-10">
+                            <input type="hidden" name="backgroundPicUrl" value="" />
+                            <p><input type="file" id="js_BackgroundPicUrl" /></p>
+                            <p><img src="https://mmbiz.qlogo.cn/mmbiz_png/jTItpJe45JL4n4gS1FSI9cOBLH6VDLTZS5ckwGcmV1QYAxp4ZFXG5C8gmbLajPmJAHMdViaiaicD4YWX6nF5dlxPw/0?wx_fmt=png" alt="" class="brand-img" /></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">会员卡标题</label>
+                        <div class="col-sm-10">
+                            <p><input type="text" name="title" value="" /></p>
+                            <p>建议会员卡标题包含商户名或服务内容，如腾讯会员黄钻尊享卡</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section js {
+    <script src="../../plugins/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    <script src="../../../../plugins/uploadifive-v1.2.2-standard/jquery.uploadifive.js"></script>
+    <script>
+        $(function () {
+            $('#js_BackgroundPicUrl').uploadifive({
+                'buttonClass': 'click',
+                'buttonText': '上传图片',
+                'buttonClass': '.btn btn-default',
+                'fileType': '*.jpg, *.jpeg, *.png',
+                'multi': false,
+                'uploadScript': '/app/media/uploadimg',
+                "onUploadComplete": function (file, data) {
+                    console.log(data);
+                }
+            });
+        })
+    </script>
+}
