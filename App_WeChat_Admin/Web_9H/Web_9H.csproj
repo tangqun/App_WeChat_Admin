@@ -135,6 +135,7 @@
     <Compile Include="Areas\App\Controllers\MaterialController.cs" />
     <Compile Include="Controllers\AuthorizerController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\App\Controllers\MediaController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -177,6 +178,7 @@
     <Content Include="plugins\uploadifive-v1.2.2-standard\uploadifive-image-only.php" />
     <Content Include="plugins\uploadifive-v1.2.2-standard\uploadifive.php" />
     <Content Include="plugins\uploadifive-v1.2.2-standard\__MACOSX\Sample\._.DS_Store" />
+    <Content Include="Views\Default\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
