@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model_9H;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,7 @@ namespace Web_9H.Areas.App.Controllers
 {
     public class CardController : Controller
     {
-        public ActionResult MemberIndex()
+        public ActionResult MemberList()
         {
             return View();
         }
@@ -16,6 +17,11 @@ namespace Web_9H.Areas.App.Controllers
         public ActionResult MemberAdd()
         {
             return View();
+        }
+
+        public ActionResult MemberAdd(MemberCardModel model)
+        {
+            return Content("", "");
         }
     }
 }

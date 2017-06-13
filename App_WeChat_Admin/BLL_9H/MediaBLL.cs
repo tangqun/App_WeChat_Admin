@@ -38,11 +38,11 @@ namespace BLL_9H
                         req.Buffer = file.InputStream;
                         string requestBody = JsonConvert.SerializeObject(req);
 
-                        LogHelper.Info("上传图片url" + "\r\n\r\nrequestBody: " + requestBody);
+                        LogHelper.Info("上传图片requestBody: " + requestBody);
 
                         string responseBody = HttpHelper.Post(url, requestBody);
 
-                        LogHelper.Info("上传图片url" + "\r\n\r\nrequestBody: " + requestBody + "\r\n\r\nresponseBody: " + responseBody);
+                        LogHelper.Info("上传图片responseBody: " + responseBody);
 
                         UploadIMGResp resp = JsonConvert.DeserializeObject<UploadIMGResp>(responseBody);
 

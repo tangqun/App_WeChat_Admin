@@ -1,4 +1,4 @@
-﻿
+﻿@model Model_9H.MemberCardModel
 @{
     Layout = "~/Areas/App/Views/Shared/_Layout.cshtml";
 }
@@ -11,7 +11,7 @@
 <div class="main-hd">
     <h2>会员卡</h2>
     <div class="tab-box">
-        <ul class="tab-inner">
+        <ul class="tab-list">
             <li class="tab-item">
                 <a href="javascript:;">优惠券</a>
             </li>
@@ -33,38 +33,121 @@
                 </div>
             </div>
         </div>*@
-    <div class="edit-box">
-        <div class="edit-inner">
-            @using (Ajax.BeginForm("", null, new AjaxOptions() { HttpMethod = "POST" }, new { @class = "form-horizontal" }))
-            {
-                <div class="edit-section">
-                    <h3>基本信息</h3>
-                    <div class="form-group">
-                        <label class="col-sm-2">商户</label>
-                        <div class="col-sm-10">
-                            <p>九合天下测试号02</p>
-                            <p><img src="https://mmbiz.qlogo.cn/mmbiz_png/jTItpJe45JL4n4gS1FSI9cOBLH6VDLTZS5ckwGcmV1QYAxp4ZFXG5C8gmbLajPmJAHMdViaiaicD4YWX6nF5dlxPw/0?wx_fmt=png" alt="" class="brand-img" /></p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">卡券封面</label>
-                        <div class="col-sm-10">
-                            <input type="hidden" name="backgroundPicUrl" value="" />
-                            <p><input type="file" id="js_BackgroundPicUrl" /></p>
-                            <p><img src="https://mmbiz.qlogo.cn/mmbiz_png/jTItpJe45JL4n4gS1FSI9cOBLH6VDLTZS5ckwGcmV1QYAxp4ZFXG5C8gmbLajPmJAHMdViaiaicD4YWX6nF5dlxPw/0?wx_fmt=png" alt="" class="brand-img" /></p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">会员卡标题</label>
-                        <div class="col-sm-10">
-                            <p><input type="text" name="title" value="" /></p>
-                            <p>建议会员卡标题包含商户名或服务内容，如腾讯会员黄钻尊享卡</p>
-                        </div>
+    @using (Ajax.BeginForm("", null, new AjaxOptions() { HttpMethod = "POST" }, new { @class = "form-horizontal" }))
+    {
+        <div class="frm-bd">
+            <div class="edit-section">
+                <h3>基本信息</h3>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">商户</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">九合天下测试号02</p>
+                        <p><img src="https://mmbiz.qlogo.cn/mmbiz_png/jTItpJe45JL4n4gS1FSI9cOBLH6VDLTZS5ckwGcmV1QYAxp4ZFXG5C8gmbLajPmJAHMdViaiaicD4YWX6nF5dlxPw/0?wx_fmt=png" alt="" class="brand-img" /></p>
                     </div>
                 </div>
-            }
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">卡券封面</label>
+                    <div class="col-sm-10">
+                        <input type="hidden" name="backgroundPicUrl" value="" />
+                        <input type="file" id="js_BackgroundPicUrl" />
+                        <p><img src="https://mmbiz.qlogo.cn/mmbiz_png/jTItpJe45JL4n4gS1FSI9cOBLH6VDLTZS5ckwGcmV1QYAxp4ZFXG5C8gmbLajPmJAHMdViaiaicD4YWX6nF5dlxPw/0?wx_fmt=png" alt="" class="brand-img" /></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">会员卡标题</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="title" value="" class="form-control" style="width: 180px;" />
+                        <p class="form-control-static">建议会员卡标题包含商户名或服务内容，如腾讯会员黄钻尊享卡</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">积分优惠</label>
+                    <div class="col-sm-10">
+                        <span>每消费</span> <span><input type="text" name="costMoneyUnit" value="" class="form-control" style="display: inline-block; width: 80px;" /></span> <span>元，赠送</span> <span><input type="text" name="increaseBonus" value="" class="form-control" style="display: inline-block; width: 80px;" /></span> <span>积分</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">单次上限</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="maxIncreaseBonus" value="" class="form-control" style="width: 180px;" />
+                        <p class="form-control-static">请设置单次增加积分的上限</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">激活送积分</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="initBonus" value="0" class="form-control" style="width: 180px;" />
+                        <p class="form-control-static">请设置激活会员卡赠送的积分</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">积分抵扣</label>
+                    <div class="col-sm-10">
+                        <span>每使用</span> <span><input type="text" name="costBonusUnit" value="" class="form-control" style="display: inline-block; width: 80px;" /></span> <span>积分，抵扣</span> <span><input type="text" name="reduceMoney" value="" class="form-control" style="display: inline-block; width: 80px;" /></span> <span>元</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">抵扣条件</label>
+                    <div class="col-sm-10">
+                        <span>订单满</span> <span><input type="text" name="leastMoneyToUseBonus" value="" class="form-control" style="display: inline-block; width: 80px;" /></span> <span>元可用，单笔上限</span> <span><input type="text" name="maxReduceBonus" value="" class="form-control" style="display: inline-block; width: 80px;" /></span> <span>积分</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">折扣优惠</label>
+                    <div class="col-sm-10">
+                        <span><input type="text" name="discount" value="" class="form-control" style="display: inline-block; width: 80px;" /></span> <span>折</span>
+                        <p class="form-control-static">请填写1-9.9之间的数字，精确到小数点后1位</p>
+                    </div>
+                </div>
+            </div>
+            <div class="edit-section">
+                <h3>会员卡详情</h3>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">特权说明</label>
+                    <div class="col-sm-10">
+                        <textarea name="prerogative" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">使用须知</label>
+                    <div class="col-sm-10">
+                        <textarea name="description" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="edit-section">
+                <h3>商户介绍</h3>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">电话</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="servicePhone" value="" class="form-control" style="width: 180px;" />
+                        <p class="form-control-static">手机或固话</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">商户服务</label>
+                    <div class="col-sm-10">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="0"> 免费WIFI
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox2" value="1"> 可带宠物
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox3" value="2"> 免费停车
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox3" value="3"> 可外卖
+                        </label>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="frm-ft">
+            <a href="" class="btn btn-default" role="button">返回</a>
+            <button type="submit" class="btn btn-success">提交</button>
+        </div>
+    }
 </div>
 
 @section js {
@@ -75,7 +158,7 @@
             $('#js_BackgroundPicUrl').uploadifive({
                 'buttonClass': 'click',
                 'buttonText': '上传图片',
-                'buttonClass': '.btn btn-default',
+                'buttonClass': '.btn btn-success',
                 'fileType': '*.jpg, *.jpeg, *.png',
                 'multi': false,
                 'uploadScript': '/app/media/uploadimg',

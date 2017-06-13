@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Web_9H.Areas.App.Controllers
 {
-    public class MediaController : AppBaseController
+    public class MediaController : AppController
     {
         private IMediaBLL mediaBLL = new MediaBLL();
 

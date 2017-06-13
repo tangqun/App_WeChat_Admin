@@ -95,6 +95,8 @@
   <ItemGroup>
     <Content Include="css\card.css" />
     <Content Include="css\fix.css" />
+    <Content Include="css\layout.css" />
+    <Content Include="css\material.css" />
     <Content Include="Global.asax" />
     <Content Include="img\base_z3560fc.png" />
     <Content Include="img\icon_menu_function.png" />
@@ -129,16 +131,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\App\AppAreaRegistration.cs" />
-    <Compile Include="Areas\App\Controllers\AppBaseController.cs" />
+    <Compile Include="Areas\App\Controllers\AppController.cs" />
     <Compile Include="Areas\App\Controllers\CardController.cs" />
     <Compile Include="Areas\App\Controllers\HomeController.cs" />
     <Compile Include="Areas\App\Controllers\MaterialController.cs" />
-    <Compile Include="Controllers\AuthorizerController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\DefaultController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\App\Controllers\MediaController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -166,7 +164,6 @@
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\User\_AjaxSearchPost.cshtml" />
     <Content Include="Areas\App\Views\web.config" />
-    <Content Include="Areas\App\Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Authorizer\List.cshtml" />
     <Content Include="Areas\App\Views\Card\MemberAdd.cshtml" />
     <Content Include="plugins\uploadifive-v1.2.2-standard\check-exists.php" />
@@ -178,7 +175,7 @@
     <Content Include="plugins\uploadifive-v1.2.2-standard\uploadifive-image-only.php" />
     <Content Include="plugins\uploadifive-v1.2.2-standard\uploadifive.php" />
     <Content Include="plugins\uploadifive-v1.2.2-standard\__MACOSX\Sample\._.DS_Store" />
-    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Areas\App\Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -189,9 +186,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\App\Models\" />
-    <Folder Include="Areas\App\Views\AppBase\" />
     <Folder Include="Areas\App\Views\Home\" />
-    <Folder Include="Areas\App\Views\Material\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

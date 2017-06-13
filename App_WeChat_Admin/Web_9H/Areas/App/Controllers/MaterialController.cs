@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Web_9H.Areas.App.Controllers
 {
-    public class MaterialController : AppBaseController
+    public class MaterialController : AppController
     {
         public ActionResult NewsList()
         {
