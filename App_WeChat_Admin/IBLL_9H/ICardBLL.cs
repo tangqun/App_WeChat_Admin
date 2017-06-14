@@ -10,5 +10,7 @@ namespace IBLL_9H
     public interface ICardBLL
     {
         string Create(string authorizerAppID, MemberCardModel model);
+
+        string Update(string authorizerAppID, MemberCardModel model);
     }
 }

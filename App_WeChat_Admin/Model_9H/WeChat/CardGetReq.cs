@@ -6,9 +6,9 @@ using System.Web;
 
 namespace Model_9H
 {
-    public class Card_Get_Req
+    public class CardGetReq
     {
         [JsonProperty("card_id")]
-        public string Card_Id { get; set; }
+        public string CardID { get; set; }
     }
 }

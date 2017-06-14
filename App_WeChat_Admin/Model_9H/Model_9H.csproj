@@ -58,8 +58,8 @@
     <Compile Include="UserInfoModel.cs" />
     <Compile Include="WeChat\BonusRule.cs" />
     <Compile Include="WeChat\Card.cs" />
-    <Compile Include="WeChat\Card_Get_Req.cs" />
-    <Compile Include="WeChat\Card_Get_Resp.cs" />
+    <Compile Include="WeChat\CardGetReq.cs" />
+    <Compile Include="WeChat\CardGetResp.cs" />
     <Compile Include="WeChat\DataInfo.cs" />
     <Compile Include="WeChat\MemberCard.cs" />
     <Compile Include="WeChat\MemberCardBaseInfo.cs" />

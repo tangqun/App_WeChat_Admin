@@ -27,7 +27,7 @@ namespace BLL_9H
                     CardType = "MEMBER_CARD",
                     MemberCard = new MemberCard()
                     {
-                        BackgroundPicUrl = model.BackGroundPicUrl,
+                        BackgroundPicUrl = model.BackgroundPicUrl,
                         BaseInfo = new MemberCardBaseInfo()
                         {
                             LogoUrl = model.LogoUrl,
@@ -51,7 +51,7 @@ namespace BLL_9H
 
                             CenterTitle = "会员买单",
                             CenterSubTitle = "买单立享" + model.Discount + "折，更有积分相送",
-                            CenterUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "gopay"
+                            CenterUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "member/gopay"
 
                             // custom_url_name
                             // custom_url
@@ -65,12 +65,12 @@ namespace BLL_9H
                         AdvancedInfo = new MemberCardAdvancedInfo()
                         {
                             BusinessService = new List<string>()
-                        {
-                            "BIZ_SERVICE_FREE_WIFI",
-                            "BIZ_SERVICE_WITH_PET",
-                            "BIZ_SERVICE_FREE_PARK",
-                            "BIZ_SERVICE_DELIVER"
-                        }
+                            {
+                                "BIZ_SERVICE_FREE_WIFI",
+                                "BIZ_SERVICE_WITH_PET",
+                                "BIZ_SERVICE_FREE_PARK",
+                                "BIZ_SERVICE_DELIVER"
+                            }
                         },
                         // 会员卡特权说明
                         Prerogative = model.Prerogative,
@@ -78,7 +78,8 @@ namespace BLL_9H
                         // 激活相关
                         AutoActivate = false,
                         WXActivate = false,
-                        ActivateUrl = "",
+                        // 激活页面
+                        ActivateUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "membercard/activate",
 
                         // 是否支持储值
                         SupplyBalance = false,
@@ -127,7 +128,7 @@ namespace BLL_9H
                 string url = "https://api.weixin.qq.com/card/create?access_token=" + accessTokenDAL.Get(authorizerAppID);
 
                 LogHelper.Info("创建会员卡url: " + url);
-                
+
                 string requestBody = JsonConvert.SerializeObject(card);
 
                 LogHelper.Info("创建会员卡requestBody: " + requestBody);
@@ -156,6 +157,226 @@ namespace BLL_9H
             }
         }
 
+        MemberCardModel GetModel(string authorizerAppID, string cardID)
+        {
+            try
+            {
+                string url = "https://api.weixin.qq.com/card/get?access_token=" + accessTokenDAL.Get(authorizerAppID);
 
+                LogHelper.Info("查询卡券详情url: " + url);
+
+                CardGetReq req = new CardGetReq()
+                {
+                    CardID = cardID
+                };
+                string requestBody = JsonConvert.SerializeObject(req);
+
+                LogHelper.Info("查询卡券详情requestBody: " + requestBody);
+
+                string responseBody = HttpHelper.Post(url, requestBody);
+
+                LogHelper.Info("查询卡券详情responseBody: " + responseBody);
+
+                CardGetResp resp = JsonConvert.DeserializeObject<CardGetResp>(responseBody);
+                if (resp.ErrCode == 0)
+                {
+                    switch (resp.Card.CardType)
+                    {
+                        case "MEMBER_CARD":
+                            MemberCard card = resp.Card.MemberCard;
+                            return new MemberCardModel()
+                            {
+                                BackgroundPicUrl = card.BackgroundPicUrl,
+                                CardID = card.BaseInfo.ID,
+                                LogoUrl = card.BaseInfo.LogoUrl,
+                                BrandName = card.BaseInfo.BrandName,
+
+                                Title = card.BaseInfo.Title,
+
+                                Notice = card.BaseInfo.Notice,
+                                ServicePhone = card.BaseInfo.ServicePhone,
+                                Description = card.BaseInfo.Description,
+                                
+                                // 会员卡特权说明
+                                Prerogative = card.Prerogative,
+
+                                Service_Free_WIFI = card.AdvancedInfo.BusinessService.Contains("BIZ_SERVICE_FREE_WIFI"),
+                                Service_With_Pet = card.AdvancedInfo.BusinessService.Contains("BIZ_SERVICE_WITH_PET"),
+                                Service_Free_Park = card.AdvancedInfo.BusinessService.Contains("BIZ_SERVICE_FREE_PARK"),
+                                Service_Deliver = card.AdvancedInfo.BusinessService.Contains("BIZ_SERVICE_DELIVER"),
+
+                                // 满
+                                CostMoneyUnit = card.BonusRule.CostMoneyUnit,
+                                // 送
+                                IncreaseBonus = card.BonusRule.IncreaseBonus,
+                                MaxIncreaseBonus = card.BonusRule.MaxIncreaseBonus,
+                                InitIncreaseBonus = card.BonusRule.InitIncreaseBonus,
+                                // 用
+                                CostBonusUnit = card.BonusRule.CostBonusUnit,
+                                // 抵
+                                ReduceMoney = card.BonusRule.ReduceMoney,
+                                // 抵扣条件，满
+                                LeastMoneyToUseBonus = card.BonusRule.LeastMoneyToUseBonus,
+                                // 抵扣条件，抵
+                                MaxReduceBonus = card.BonusRule.MaxReduceBonus,
+
+                                Discount = card.Discount
+                            };
+                        default:
+                            return null;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("唐群", ex);
+                return null;
+            }
+        }
+
+        public string Update(string authorizerAppID, MemberCardModel model)
+        {
+            try
+            {
+                Card card = new Card()
+                {
+                    CardID = model.CardID,
+                    MemberCard = new MemberCard()
+                    {
+                        BackgroundPicUrl = model.BackgroundPicUrl,
+                        BaseInfo = new MemberCardBaseInfo()
+                        {
+                            LogoUrl = model.LogoUrl,
+                            BrandName = model.BrandName,
+                            CodeType = "CODE_TYPE_QRCODE",
+                            Title = model.Title,
+                            Color = "Color010",
+                            Notice = model.Notice,
+                            ServicePhone = model.ServicePhone,
+                            Description = model.Description,
+
+                            DateInfo = new DataInfo() { Type = "DATE_TYPE_PERMANENT" },
+                            Sku = new Sku() { Quantity = 100000000 },
+
+                            GetLimit = 1,
+                            CanGiveFriend = false,
+                            CanShare = false,
+
+                            UseCustomCode = true,
+                            UseAllLocations = true,
+
+                            CenterTitle = "会员买单",
+                            CenterSubTitle = "买单立享" + model.Discount + "折，更有积分相送",
+                            CenterUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "member/gopay"
+
+                            // custom_url_name
+                            // custom_url
+                            // custom_url_sub_title
+                            // promotion_url_name
+                            // promotion_url
+                            // promotion_url_sub_title
+
+                            // need_push_on_view
+                        },
+                        AdvancedInfo = new MemberCardAdvancedInfo()
+                        {
+                            BusinessService = new List<string>()
+                            {
+                                "BIZ_SERVICE_FREE_WIFI",
+                                "BIZ_SERVICE_WITH_PET",
+                                "BIZ_SERVICE_FREE_PARK",
+                                "BIZ_SERVICE_DELIVER"
+                            }
+                        },
+                        // 会员卡特权说明
+                        Prerogative = model.Prerogative,
+
+                        // 激活相关
+                        AutoActivate = false,
+                        WXActivate = false,
+                        // 激活页面
+                        ActivateUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "membercard/activate",
+
+                        // 是否支持储值
+                        SupplyBalance = false,
+
+                        CustomField1 = new CustomField()
+                        {
+                            // 不行就用 Name , 积分变动触发 is_notify_bonus
+                            // 其他两个触发 is_notify_custom_field2 is_notify_custom_field3
+                            NameType = "FIELD_NAME_TYPE_STAMP",
+                            Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "bonus"
+                        },
+                        CustomField2 = new CustomField()
+                        {
+                            NameType = "FIELD_NAME_TYPE_LEVEL",
+                            Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "level"
+                        },
+                        CustomField3 = new CustomField()
+                        {
+                            NameType = "FIELD_NAME_TYPE_COUPON",
+                            Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "coupon"
+                        },
+
+                        // 积分相关
+                        SupplyBonus = true,
+                        BonusRule = new BonusRule()
+                        {
+                            // 满
+                            CostMoneyUnit = model.CostMoneyUnit,
+                            // 送
+                            IncreaseBonus = model.IncreaseBonus,
+                            MaxIncreaseBonus = model.MaxIncreaseBonus,
+                            InitIncreaseBonus = model.InitIncreaseBonus,
+                            // 用
+                            CostBonusUnit = model.CostBonusUnit,
+                            // 抵
+                            ReduceMoney = model.ReduceMoney,
+                            // 抵扣条件，满
+                            LeastMoneyToUseBonus = model.LeastMoneyToUseBonus,
+                            // 抵扣条件，抵
+                            MaxReduceBonus = model.MaxReduceBonus
+                        },
+                        Discount = model.Discount
+                    }
+                };
+
+                string url = "https://api.weixin.qq.com/card/update?access_token=" + accessTokenDAL.Get(authorizerAppID);
+
+                LogHelper.Info("更新会员卡url: " + url);
+
+                string requestBody = JsonConvert.SerializeObject(card);
+
+                LogHelper.Info("更新会员卡requestBody: " + requestBody);
+
+                string responseBody = HttpHelper.Post(url, requestBody);
+
+                LogHelper.Info("更新会员卡responseBody: " + responseBody);
+
+                CardCreateResp resp = JsonConvert.DeserializeObject<CardCreateResp>(responseBody);
+                if (resp.ErrCode == 0)
+                {
+                    // 存储 authorizerAppID 和 cardID 之间的对应关系
+                    cardInfoDAL.Insert(authorizerAppID, resp.CardID, DateTime.Now);
+                    return JsonConvert.SerializeObject(new RESTfulModel() { Code = (int)CodeEnum.成功, Msg = string.Format(codeMsgDAL.GetByCode((int)CodeEnum.成功), "更新成功") });
+                }
+                else
+                {
+                    string msg = "errcode: " + resp.ErrCode + ", errmsg: " + resp.ErrMsg;
+                    return JsonConvert.SerializeObject(new RESTfulModel() { Code = (int)CodeEnum.失败, Msg = string.Format(codeMsgDAL.GetByCode((int)CodeEnum.失败), msg) });
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error("唐群", ex);
+                return JsonConvert.SerializeObject(new RESTfulModel() { Code = (int)CodeEnum.系统异常, Msg = codeMsgDAL.GetByCode((int)CodeEnum.系统异常) });
+            }
+        }
+
+        // 不支持删除
     }
 }

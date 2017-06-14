@@ -8,6 +8,8 @@ namespace Model_9H
 {
     public class MemberCardBaseInfo
     {
+        [JsonProperty("id")]
+        public string ID { get; set; }
         [JsonProperty("logo_url")]
         public string LogoUrl { get; set; }
         [JsonProperty("code_type")]
