@@ -137,6 +137,7 @@
     <Compile Include="Areas\App\Controllers\MaterialController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Areas\App\Controllers\MediaController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
