@@ -61,12 +61,14 @@ namespace DAL_9H
             {
                 UserInfoModel model = new UserInfoModel();
                 model.ID = dr["id"].ToInt();
+                model.BusinessID = dr["business_id"].ToString();
                 model.Mobile = dr["mobile"].ToString();
                 model.Salt = dr["salt"].ToString();
                 model.Password = dr["password"].ToString();
                 model.RealName = dr["real_name"].ToString();
                 model.UserStat = dr["user_stat"].ToInt();
                 model.LoginErrorTimes = dr["login_error_times"].ToInt();
+                model.Token = dr["token"].ToString();
                 model.CreateTime = dr["create_time"].ToDateTime();
                 model.UpdateTime = dr["update_time"].ToDateTime();
                 return model;

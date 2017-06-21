@@ -104,6 +104,7 @@
     <Content Include="img\login_banner_bg.png" />
     <Content Include="img\login_pwd.png" />
     <Content Include="img\login_user.png" />
+    <Content Include="js\login.js" />
     <Content Include="plugins\bootstrap\css\bootstrap-theme.css" />
     <Content Include="plugins\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="plugins\bootstrap\css\bootstrap.css" />
@@ -142,6 +143,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -181,6 +183,7 @@
     <Content Include="Log4Net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -191,7 +194,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL_9H\BLL_9H.csproj">

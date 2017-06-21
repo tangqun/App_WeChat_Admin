@@ -10,18 +10,18 @@ namespace Web_9H.Controllers
 {
     public class BaseController : Controller
     {
-        protected UserInfoModel CurrentUser { get; set; }
+        protected AdminInfoModel CurrentUser { get; set; }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            //if (Session != null && Session["user"] != null)
-            //{
-            //    CurrentUser = Session["user"] as UserInfoModel;
-            //}
-            //else
-            //{
-            //    filterContext.Result = new HttpStatusCodeResult(500);
-            //}
+            if (Session != null && Session["admin"] != null)
+            {
+                CurrentUser = Session["admin"] as AdminInfoModel;
+            }
+            else
+            {
+                filterContext.Result = new HttpStatusCodeResult(500);
+            }
 
             OnAppActionExecuting(filterContext);
 
