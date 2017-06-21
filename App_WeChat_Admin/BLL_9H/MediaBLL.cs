@@ -31,18 +31,18 @@ namespace BLL_9H
                         string accessToken = accessTokenDAL.Get(authorizerAppID);
                         string url = "https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=" + accessToken;
 
-                        LogHelper.Info("上传图片url: " + url);
+                        LogHelper.Info("上传图片 url", url);
 
                         UploadIMGReq req = new UploadIMGReq();
                         req.AccessToken = accessToken;
                         req.Buffer = file.InputStream;
                         string requestBody = JsonConvert.SerializeObject(req);
 
-                        LogHelper.Info("上传图片requestBody: " + requestBody);
+                        LogHelper.Info("上传图片 requestBody", requestBody);
 
                         string responseBody = HttpHelper.Post(url, requestBody);
 
-                        LogHelper.Info("上传图片responseBody: " + responseBody);
+                        LogHelper.Info("上传图片 responseBody", responseBody);
 
                         UploadIMGResp resp = JsonConvert.DeserializeObject<UploadIMGResp>(responseBody);
 
@@ -62,7 +62,7 @@ namespace BLL_9H
             }
             catch (Exception ex)
             {
-                LogHelper.Error("唐群", ex);
+                LogHelper.Error(ex);
                 return JsonConvert.SerializeObject(new RESTfulModel() { Code = (int)CodeEnum.系统异常, Msg = codeMsgDAL.GetByCode((int)CodeEnum.系统异常) });
             }
         }

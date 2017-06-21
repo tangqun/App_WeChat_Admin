@@ -44,9 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminInfoModel.cs" />
     <Compile Include="AuthorizerInfoModel.cs" />
     <Compile Include="CardInfoModel.cs" />
     <Compile Include="CodeMsgModel.cs" />
+    <Compile Include="LoginModel.cs" />
     <Compile Include="WeChat\CardCreateResp.cs" />
     <Compile Include="WeChat\CustomField.cs" />
     <Compile Include="Enums\CodeEnum.cs" />

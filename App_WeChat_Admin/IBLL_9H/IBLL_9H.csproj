@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAdminInfoBLL.cs" />
     <Compile Include="IAuthorizerInfoBLL.cs" />
     <Compile Include="ICardBLL.cs" />
     <Compile Include="IMediaBLL.cs" />

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAccessTokenDAL.cs" />
+    <Compile Include="IAdminInfoDAL.cs" />
     <Compile Include="IAuthorizerInfoDAL.cs" />
     <Compile Include="ICardInfoDAL.cs" />
     <Compile Include="ICodeMsgDAL.cs" />

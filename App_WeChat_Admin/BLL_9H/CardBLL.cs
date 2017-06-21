@@ -127,15 +127,15 @@ namespace BLL_9H
 
                 string url = "https://api.weixin.qq.com/card/create?access_token=" + accessTokenDAL.Get(authorizerAppID);
 
-                LogHelper.Info("创建会员卡url: " + url);
+                LogHelper.Info("创建会员卡 url", url);
 
                 string requestBody = JsonConvert.SerializeObject(card);
 
-                LogHelper.Info("创建会员卡requestBody: " + requestBody);
+                LogHelper.Info("创建会员卡 requestBody", requestBody);
 
                 string responseBody = HttpHelper.Post(url, requestBody);
 
-                LogHelper.Info("创建会员卡responseBody: " + responseBody);
+                LogHelper.Info("创建会员卡 responseBody", responseBody);
 
                 CardCreateResp resp = JsonConvert.DeserializeObject<CardCreateResp>(responseBody);
                 if (resp.ErrCode == 0)
@@ -152,7 +152,7 @@ namespace BLL_9H
             }
             catch (Exception ex)
             {
-                LogHelper.Error("唐群", ex);
+                LogHelper.Error(ex);
                 return JsonConvert.SerializeObject(new RESTfulModel() { Code = (int)CodeEnum.系统异常, Msg = codeMsgDAL.GetByCode((int)CodeEnum.系统异常) });
             }
         }
@@ -163,7 +163,7 @@ namespace BLL_9H
             {
                 string url = "https://api.weixin.qq.com/card/get?access_token=" + accessTokenDAL.Get(authorizerAppID);
 
-                LogHelper.Info("查询卡券详情url: " + url);
+                LogHelper.Info("查询卡券详情 url", url);
 
                 CardGetReq req = new CardGetReq()
                 {
@@ -171,11 +171,11 @@ namespace BLL_9H
                 };
                 string requestBody = JsonConvert.SerializeObject(req);
 
-                LogHelper.Info("查询卡券详情requestBody: " + requestBody);
+                LogHelper.Info("查询卡券详情 requestBody", requestBody);
 
                 string responseBody = HttpHelper.Post(url, requestBody);
 
-                LogHelper.Info("查询卡券详情responseBody: " + responseBody);
+                LogHelper.Info("查询卡券详情 responseBody", responseBody);
 
                 CardGetResp resp = JsonConvert.DeserializeObject<CardGetResp>(responseBody);
                 if (resp.ErrCode == 0)
@@ -233,7 +233,7 @@ namespace BLL_9H
             }
             catch (Exception ex)
             {
-                LogHelper.Error("唐群", ex);
+                LogHelper.Error(ex);
                 return null;
             }
         }
@@ -347,15 +347,15 @@ namespace BLL_9H
 
                 string url = "https://api.weixin.qq.com/card/update?access_token=" + accessTokenDAL.Get(authorizerAppID);
 
-                LogHelper.Info("更新会员卡url: " + url);
+                LogHelper.Info("更新会员卡 url", url);
 
                 string requestBody = JsonConvert.SerializeObject(card);
 
-                LogHelper.Info("更新会员卡requestBody: " + requestBody);
+                LogHelper.Info("更新会员卡 requestBody", requestBody);
 
                 string responseBody = HttpHelper.Post(url, requestBody);
 
-                LogHelper.Info("更新会员卡responseBody: " + responseBody);
+                LogHelper.Info("更新会员卡 responseBody", responseBody);
 
                 CardCreateResp resp = JsonConvert.DeserializeObject<CardCreateResp>(responseBody);
                 if (resp.ErrCode == 0)
@@ -372,7 +372,7 @@ namespace BLL_9H
             }
             catch (Exception ex)
             {
-                LogHelper.Error("唐群", ex);
+                LogHelper.Error(ex);
                 return JsonConvert.SerializeObject(new RESTfulModel() { Code = (int)CodeEnum.系统异常, Msg = codeMsgDAL.GetByCode((int)CodeEnum.系统异常) });
             }
         }

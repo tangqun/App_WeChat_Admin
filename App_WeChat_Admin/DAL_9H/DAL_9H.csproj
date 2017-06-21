@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessTokenDAL.cs" />
+    <Compile Include="AdminInfoDAL.cs" />
     <Compile Include="AuthorizerInfoDAL.cs" />
     <Compile Include="CardInfoDAL.cs" />
     <Compile Include="CodeMsgDAL.cs" />

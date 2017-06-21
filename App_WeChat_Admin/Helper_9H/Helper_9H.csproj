@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ConfigHelper.cs" />
     <Compile Include="CookieHelper.cs" />
+    <Compile Include="EncryptHelper.cs" />
     <Compile Include="HttpHelper.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="ParseHelper.cs" />
