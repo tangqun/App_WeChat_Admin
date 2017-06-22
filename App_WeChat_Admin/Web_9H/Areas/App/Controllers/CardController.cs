@@ -9,17 +9,18 @@ namespace Web_9H.Areas.App.Controllers
 {
     public class CardController : Controller
     {
-        public ActionResult MemberList()
+        public ActionResult MemberCardList()
         {
             return View();
         }
 
-        public ActionResult MemberAdd()
+        public ActionResult MemberCardCreate()
         {
             return View();
         }
 
-        public ActionResult MemberAdd(MemberCardModel model)
+        [HttpPost]
+        public ActionResult MemberCardCreate(MemberCardModel model)
         {
             return Content("", "");
         }

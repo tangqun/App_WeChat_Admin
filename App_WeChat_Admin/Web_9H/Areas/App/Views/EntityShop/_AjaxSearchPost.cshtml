@@ -1,14 +1,12 @@
-﻿@model PagedList<Model_9H.UserInfoModel>
+﻿@model PagedList<Model_9H.EntityShopInfoModel>
 
 <table class="table table-bordered table-striped">
     <tr>
         <th class="nowrap">序号</th>
-        <th>用户ID</th>
-        <th>手机号</th>
-        <th>真实姓名</th>
-        <th>用户状态</th>
-        <th>注册时间</th>
-        <th>最后操作时间</th>
+        <th>门店名称</th>
+        <th>分店名称</th>
+        <th>地址</th>
+        <th>电话</th>
         <th>操作</th>
     </tr>
     @if (Model != null && Model.Any())
@@ -18,13 +16,11 @@
         {
             <tr>
                 <td>@(Model.StartItemIndex + i++)</td>
-                <td>@item.BusinessID</td>
-                <td>@item.Mobile</td>
-                <td>@item.RealName</td>
-                <td>@item.UserStat</td>
-                <td>@item.CreateTime</td>
-                <td>@item.UpdateTime</td>
-                <td><a href="/authorizer/list/@item.BusinessID">查看绑定的公众号</a></td>
+                <td>@item.BusinessName</td>
+                <td>@item.BranchName</td>
+                <td>@item.Province @item.City @item.District @item.Address</td>
+                <td>@item.Telephone</td>
+                <td><a href="/app/entityshop/edit/@item.PoiID">查看绑定的公众号</a></td>
             </tr>
         }
     }

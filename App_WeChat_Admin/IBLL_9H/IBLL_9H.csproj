@@ -48,6 +48,7 @@
     <Compile Include="IAdminInfoBLL.cs" />
     <Compile Include="IAuthorizerInfoBLL.cs" />
     <Compile Include="ICardBLL.cs" />
+    <Compile Include="IEntityShopBLL.cs" />
     <Compile Include="IMediaBLL.cs" />
     <Compile Include="IUserInfoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

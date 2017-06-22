@@ -14,7 +14,7 @@ namespace Web_9H.Areas.App.Controllers
 
         public ActionResult List(int id)
         {
-            return View(authorizerInfoBLL.GetModel(id));
+            return View(authorizerInfoBLL.GetList(id));
         }
     }
 }

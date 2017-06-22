@@ -42,6 +42,35 @@ namespace DAL_9H
             return EntityListToModelList(dt);
         }
 
+        public AuthorizerInfoModel GetModel(string authorizerAppID)
+        {
+            string sql =
+                        @"SELECT
+                            `id`,
+                            `user_id`,
+                            `authorizer_appid`,
+                            `nick_name`,
+                            `head_img`,
+                            `service_type_info`,
+                            `verify_type_info`,
+                            `user_name`,
+                            `alias`,
+                            `qrcode_url`,
+                            `open_pay`,
+                            `open_shake`,
+                            `open_scan`,
+                            `open_card`,
+                            `open_store`,
+                            `idc`,
+                            `principal_name`,
+                            `create_time`,
+                            `update_time`
+                        FROM `authorizer_info`
+                        WHERE `authorizer_appid` = @authorizer_appid;";
+            DataRow dr = MySqlHelper.ExecuteDataRow(ConfigHelper.ConnStr, sql, new MySqlParameter("@authorizer_appid", authorizerAppID));
+            return EntityToModel(dr);
+        }
+
         private List<AuthorizerInfoModel> EntityListToModelList(DataTable dt)
         {
             List<AuthorizerInfoModel> modelList = new List<AuthorizerInfoModel>();
@@ -82,35 +111,6 @@ namespace DAL_9H
                 return model;
             }
             return null;
-        }
-
-        public AuthorizerInfoModel GetModel(int id)
-        {
-            string sql =
-                        @"SELECT
-                            `id`,
-                            `user_id`,
-                            `authorizer_appid`,
-                            `nick_name`,
-                            `head_img`,
-                            `service_type_info`,
-                            `verify_type_info`,
-                            `user_name`,
-                            `alias`,
-                            `qrcode_url`,
-                            `open_pay`,
-                            `open_shake`,
-                            `open_scan`,
-                            `open_card`,
-                            `open_store`,
-                            `idc`,
-                            `principal_name`,
-                            `create_time`,
-                            `update_time`
-                        FROM `authorizer_info`
-                        WHERE `id` = @id LIMIT 0, 1;";
-            DataRow dr = MySqlHelper.ExecuteDataRow(ConfigHelper.ConnStr, sql, new MySqlParameter("@id", id));
-            return EntityToModel(dr);
         }
     }
 }

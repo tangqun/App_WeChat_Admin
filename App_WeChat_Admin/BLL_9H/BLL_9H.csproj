@@ -52,6 +52,7 @@
     <Compile Include="AuthorizerInfoBLL.cs" />
     <Compile Include="CardBLL.cs" />
     <Compile Include="AdminInfoBLL.cs" />
+    <Compile Include="EntityShopBLL.cs" />
     <Compile Include="MediaBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInfoBLL.cs" />

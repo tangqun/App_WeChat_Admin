@@ -28,11 +28,11 @@ namespace BLL_9H
             }
         }
 
-        public AuthorizerInfoModel GetModel(int id)
+        public AuthorizerInfoModel GetModel(string authorizerAppID)
         {
             try
             {
-                return authorizerInfoDAL.GetModel(id);
+                return authorizerInfoDAL.GetModel(authorizerAppID);
             }
             catch (Exception ex)
             {

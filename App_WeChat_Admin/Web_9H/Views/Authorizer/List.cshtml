@@ -3,56 +3,63 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="main-hd">
-    <h2>公众号管理</h2>
+<div class="height-50 line-height-50 b margin-bottom-15">
+    公众号管理
 </div>
-<div class="main-bd">
-
-    <div id="js_view">
-        <table class="table table-bordered table-striped">
-            <tr>
-                <th class="nowrap">序号</th>
-                <th>AppID</th>
-                <th>名称</th>
-                <th>头像</th>
-                <th>类型</th>
-                <th>认证类型</th>
-                <th>原始ID</th>
-                <th>微信号</th>
-                <th>二维码</th>
-                <th>门店功能</th>
-                <th>卡券功能</th>
-                <th>支付功能</th>
-                <th>主体信息</th>
-                <th>首次授权时间</th>
-                <th>最后更新时间</th>
-                <th>操作</th>
-            </tr>
-            @if (Model != null && Model.Any())
+<div id="js_view">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th class="nowrap">序号</th>
+            <th>AppID</th>
+            <th>名称</th>
+            <th>头像</th>
+            <th>类型</th>
+            <th>认证类型</th>
+            <th>原始ID</th>
+            <th>微信号</th>
+            <th>二维码</th>
+            <th>门店功能</th>
+            <th>卡券功能</th>
+            <th>支付功能</th>
+            <th>主体信息</th>
+            <th>首次授权时间</th>
+            <th>最后更新时间</th>
+            <th>操作</th>
+        </tr>
+        @if (Model != null && Model.Any())
             {
                 int i = 0;
                 foreach (var item in Model)
                 {
-                    <tr>
-                        <td>@(i++)</td>
-                        <td>@item.AuthorizerAppID</td>
-                        <td>@item.NickName</td>
-                        <td>@item.HeadImg</td>
-                        <td>@item.ServiceTypeInfo</td>
-                        <td>@item.VerifyTypeInfo</td>
-                        <td>@item.UserName</td>
-                        <td>@item.Alias</td>
-                        <td>@item.QrcodeUrl</td>
-                        <td>@item.OpenStore</td>
-                        <td>@item.OpenCard</td>
-                        <td>@item.OpenPay</td>
-                        <td>@item.PrincipalName</td>
-                        <td>@item.CreateTime</td>
-                        <td>@item.UpdateTime</td>
-                        <td><a class="btn btn-default btn-xs" href="/app/home/index" role="button">进入公众号</a></td>
-                    </tr>
-                }
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@item.AuthorizerAppID</td>
+                    <td>@item.NickName</td>
+                    <td>@item.HeadImg</td>
+                    <td>@item.ServiceTypeInfo</td>
+                    <td>@item.VerifyTypeInfo</td>
+                    <td>@item.UserName</td>
+                    <td>@item.Alias</td>
+                    <td>@item.QrcodeUrl</td>
+                    <td>@item.OpenStore</td>
+                    <td>@item.OpenCard</td>
+                    <td>@item.OpenPay</td>
+                    <td>@item.PrincipalName</td>
+                    <td>@item.CreateTime</td>
+                    <td>@item.UpdateTime</td>
+                    <td><a class="btn btn-default btn-xs" href="/app/home/index/@item.AuthorizerAppID" role="button">进入公众号</a></td>
+                </tr>
             }
-        </table>
-    </div>
+        }
+    </table>
 </div>
+
+@section js {
+    @if (Model != null && Model.Count == 1)
+    {
+        string authorizerID = Model[0].AuthorizerAppID;
+        <script>
+            location.href = '/app/home/index/@authorizerID';
+        </script>
+    }
+}

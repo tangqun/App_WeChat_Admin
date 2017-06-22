@@ -14,15 +14,15 @@ namespace Web_9H.Areas.App.Controllers
     {
         private IAuthorizerInfoBLL authorizerInfoBLL = new AuthorizerInfoBLL();
 
-        public ActionResult Index(int id)
+        public ActionResult Index(string id)
         {
             AuthorizerInfoModel model = authorizerInfoBLL.GetModel(id);
             if (model != null)
             {
-                CookieHelper.SetCookie("authorizer", model.ID.ToString());
+                Session["authorizer"] = model;
                 return View(model);
             }
-            return new HttpStatusCodeResult(500);
+            return new HttpStatusCodeResult(404);
         }
     }
 }

@@ -48,11 +48,13 @@
     <Compile Include="AuthorizerInfoModel.cs" />
     <Compile Include="CardInfoModel.cs" />
     <Compile Include="CodeMsgModel.cs" />
+    <Compile Include="EntityShopInfoModel.cs" />
     <Compile Include="LoginModel.cs" />
     <Compile Include="WeChat\CardCreateResp.cs" />
     <Compile Include="WeChat\CustomField.cs" />
     <Compile Include="Enums\CodeEnum.cs" />
-    <Compile Include="WeChat\MemberCardActivateReq.cs" />
+    <Compile Include="WeChat\EntityShop.cs" />
+    <Compile Include="WeChat\EntityShopInfo.cs" />
     <Compile Include="WeChat\MemberCardAdvancedInfo.cs" />
     <Compile Include="MemberCardModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,7 +67,11 @@
     <Compile Include="WeChat\DataInfo.cs" />
     <Compile Include="WeChat\MemberCard.cs" />
     <Compile Include="WeChat\MemberCardBaseInfo.cs" />
-    <Compile Include="WeChat\Photo_Info.cs" />
+    <Compile Include="WeChat\PhotoInfo.cs" />
+    <Compile Include="WeChat\EntityShopListGetReq.cs" />
+    <Compile Include="WeChat\EntityShopListGetResp.cs" />
+    <Compile Include="WeChat\EntityShopGetReq.cs" />
+    <Compile Include="WeChat\EntityShopGetResp.cs" />
     <Compile Include="WeChat\Sku.cs" />
     <Compile Include="WeChat\UploadIMGReq.cs" />
     <Compile Include="WeChat\UploadIMGResp.cs" />

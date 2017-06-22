@@ -29,10 +29,10 @@ namespace Model_9H
         public string Description { get; set; }
         public string Prerogative { get; set; }
 
-        public bool Service_Free_WIFI { get; set; }
-        public bool Service_With_Pet { get; set; }
-        public bool Service_Free_Park { get; set; }
-        public bool Service_Deliver { get; set; }
+        public bool ServiceFreeWIFI { get; set; }
+        public bool ServiceWithPet { get; set; }
+        public bool ServiceFreePark { get; set; }
+        public bool ServiceDeliver { get; set; }
 
         public float Discount { get; set; }
     }

@@ -51,7 +51,7 @@ namespace BLL_9H
 
                             CenterTitle = "会员买单",
                             CenterSubTitle = "买单立享" + model.Discount + "折，更有积分相送",
-                            CenterUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "member/gopay"
+                            CenterUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "membercard/gopay"
 
                             // custom_url_name
                             // custom_url
@@ -200,10 +200,10 @@ namespace BLL_9H
                                 // 会员卡特权说明
                                 Prerogative = card.Prerogative,
 
-                                Service_Free_WIFI = card.AdvancedInfo.BusinessService.Contains("BIZ_SERVICE_FREE_WIFI"),
-                                Service_With_Pet = card.AdvancedInfo.BusinessService.Contains("BIZ_SERVICE_WITH_PET"),
-                                Service_Free_Park = card.AdvancedInfo.BusinessService.Contains("BIZ_SERVICE_FREE_PARK"),
-                                Service_Deliver = card.AdvancedInfo.BusinessService.Contains("BIZ_SERVICE_DELIVER"),
+                                ServiceFreeWIFI = card.AdvancedInfo.BusinessService.Contains("BIZ_SERVICE_FREE_WIFI"),
+                                ServiceWithPet = card.AdvancedInfo.BusinessService.Contains("BIZ_SERVICE_WITH_PET"),
+                                ServiceFreePark = card.AdvancedInfo.BusinessService.Contains("BIZ_SERVICE_FREE_PARK"),
+                                ServiceDeliver = card.AdvancedInfo.BusinessService.Contains("BIZ_SERVICE_DELIVER"),
 
                                 // 满
                                 CostMoneyUnit = card.BonusRule.CostMoneyUnit,
@@ -271,7 +271,7 @@ namespace BLL_9H
 
                             CenterTitle = "会员买单",
                             CenterSubTitle = "买单立享" + model.Discount + "折，更有积分相送",
-                            CenterUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "member/gopay"
+                            CenterUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "membercard/gopay"
 
                             // custom_url_name
                             // custom_url
