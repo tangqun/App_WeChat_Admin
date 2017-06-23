@@ -148,6 +148,7 @@
     <Compile Include="Areas\App\Controllers\CardController.cs" />
     <Compile Include="Areas\App\Controllers\EntityShopController.cs" />
     <Compile Include="Areas\App\Controllers\HomeController.cs" />
+    <Compile Include="Areas\App\Controllers\MeidaController.cs" />
     <Compile Include="Controllers\AuthorizerController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

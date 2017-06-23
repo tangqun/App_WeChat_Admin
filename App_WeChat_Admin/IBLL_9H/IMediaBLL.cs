@@ -9,6 +9,6 @@ namespace IBLL_9H
 {
     public interface IMediaBLL
     {
-        string UploadImg(string authorizerAppID, HttpFileCollectionBase files);
+        string UploadIMG(string authorizerAppID, HttpFileCollectionBase files);
     }
 }

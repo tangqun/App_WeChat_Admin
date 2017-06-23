@@ -1,4 +1,21 @@
-﻿
+﻿@model List<Model_9H.MemberCardModel>
 @{
     Layout = "~/Areas/App/Views/Shared/_Layout.cshtml";
 }
+
+<table>
+    
+
+    @if (Model != null && Model.Any())
+    {
+        foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.CardID</td>
+            </tr>
+
+        }
+    }
+
+</table>

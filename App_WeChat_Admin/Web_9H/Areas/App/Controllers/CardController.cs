@@ -26,7 +26,7 @@ namespace Web_9H.Areas.App.Controllers
         [HttpPost]
         public ActionResult MemberCardCreate(MemberCardModel model)
         {
-            return Content("", "");
+            return Content(cardBLL.Create(CurrentAuthorizer.AuthorizerAppID, model), "application/json");
         }
     }
 }

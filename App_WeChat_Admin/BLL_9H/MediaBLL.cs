@@ -18,14 +18,14 @@ namespace BLL_9H
         private IAccessTokenDAL accessTokenDAL = new AccessTokenDAL();
         private ICodeMsgDAL codeMsgDAL = new CodeMsgDAL();
 
-        public string UploadImg(string authorizerAppID, HttpFileCollectionBase files)
+        public string UploadIMG(string authorizerAppID, HttpFileCollectionBase files)
         {
             try
             {
                 if (files != null)
                 {
                     HttpPostedFileBase file = files[0];
-                    float mbSize = file.ContentLength / 1048576;
+                    float mbSize = (float)file.ContentLength / 1048576;
                     if (mbSize <= 1)
                     {
                         string accessToken = accessTokenDAL.Get(authorizerAppID);
@@ -33,14 +33,15 @@ namespace BLL_9H
 
                         LogHelper.Info("上传图片 url", url);
 
-                        UploadIMGReq req = new UploadIMGReq();
-                        req.AccessToken = accessToken;
-                        req.Buffer = file.InputStream;
-                        string requestBody = JsonConvert.SerializeObject(req);
+                        //UploadIMGReq req = new UploadIMGReq()
+                        //{
+                        //    Buffer = file.InputStream
+                        //};
+                        //string requestBody = JsonConvert.SerializeObject(req);
 
-                        LogHelper.Info("上传图片 requestBody", requestBody);
+                        //LogHelper.Info("上传图片 requestBody", requestBody);
 
-                        string responseBody = HttpHelper.Post(url, requestBody);
+                        string responseBody = HttpHelper.Post(url, file.FileName, file.InputStream);
 
                         LogHelper.Info("上传图片 responseBody", responseBody);
 
