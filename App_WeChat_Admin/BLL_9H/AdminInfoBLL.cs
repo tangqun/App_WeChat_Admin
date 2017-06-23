@@ -29,12 +29,6 @@ namespace BLL_9H
 
                     if (adminInfoModel.Password == pwd)
                     {
-                        //string token = Guid.NewGuid().ToString().Replace("-", "");
-                        //// 更新token
-                        //adminInfoDAL.UpdateToken(adminInfoModel.BusinessID, token, DateTime.Now);
-
-                        //// 记录token日志
-
                         return new RESTfulModel() { Code = (int)CodeEnum.成功, Msg = string.Format(codeMsgDAL.GetByCode((int)CodeEnum.成功), "登陆成功"), Data = adminInfoModel };
                     }
                     else

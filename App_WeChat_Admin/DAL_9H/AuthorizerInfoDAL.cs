@@ -13,7 +13,7 @@ namespace DAL_9H
 {
     public class AuthorizerInfoDAL : IAuthorizerInfoDAL
     {
-        public List<AuthorizerInfoModel> GetList(int userID)
+        public List<AuthorizerInfoModel> GetList(string userID)
         {
             string sql =
                         @"SELECT
@@ -90,7 +90,7 @@ namespace DAL_9H
             {
                 AuthorizerInfoModel model = new AuthorizerInfoModel();
                 model.ID = dr["id"].ToInt();
-                model.UserID = dr["user_id"].ToInt();
+                model.UserID = dr["user_id"].ToString();
                 model.AuthorizerAppID = dr["authorizer_appid"].ToString();
                 model.NickName = dr["nick_name"].ToString();
                 model.HeadImg = dr["head_img"].ToString();

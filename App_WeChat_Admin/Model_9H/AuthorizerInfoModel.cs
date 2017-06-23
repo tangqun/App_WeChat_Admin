@@ -10,7 +10,7 @@ namespace Model_9H
     {
         public int ID { get; set; }
         // 不直接让 id 和 authorizer_appid 直接对外
-        public int UserID { get; set; }
+        public string UserID { get; set; }
 
         public string AuthorizerAppID { get; set; }
         public string NickName { get; set; }

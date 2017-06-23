@@ -1,4 +1,6 @@
-﻿using Model_9H;
+﻿using BLL_9H;
+using IBLL_9H;
+using Model_9H;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +9,13 @@ using System.Web.Mvc;
 
 namespace Web_9H.Areas.App.Controllers
 {
-    public class CardController : Controller
+    public class CardController : AppBaseController
     {
+        private ICardBLL cardBLL = new CardBLL();
+
         public ActionResult MemberCardList()
         {
-            return View();
+            return View(cardBLL.GetList(CurrentAuthorizer.AuthorizerAppID));
         }
 
         public ActionResult MemberCardCreate()

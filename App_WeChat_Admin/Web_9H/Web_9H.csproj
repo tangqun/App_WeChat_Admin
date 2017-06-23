@@ -197,6 +197,8 @@
     <Content Include="Areas\App\Views\EntityShop\List.cshtml" />
     <Content Include="Areas\App\Views\EntityShop\_AjaxSearchPost.cshtml" />
     <Content Include="Areas\App\Views\EntityShop\Create.cshtml" />
+    <Content Include="Areas\App\Views\Card\MemberCardList.cshtml" />
+    <None Include="Properties\PublishProfiles\admin.smartyancheng.com.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

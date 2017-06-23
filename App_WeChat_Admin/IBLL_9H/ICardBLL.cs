@@ -11,6 +11,10 @@ namespace IBLL_9H
     {
         string Create(string authorizerAppID, MemberCardModel model);
 
+        MemberCardModel GetModel(string authorizerAppID, string cardID);
+
         string Update(string authorizerAppID, MemberCardModel model);
+
+        List<MemberCardModel> GetList(string authorizerAppID);
     }
 }

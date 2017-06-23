@@ -18,7 +18,6 @@ namespace Model_9H
         public string RealName { get; set; }
         public int UserStat { get; set; }
         public int LoginErrorTimes { get; set; }
-        public string Token { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime UpdateTime { get; set; }
     }

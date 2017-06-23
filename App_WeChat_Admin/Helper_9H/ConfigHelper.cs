@@ -14,7 +14,6 @@ namespace Helper_9H
         public static string Salt = GetConfig("Salt");
         public static string DomainToken = GetConfig("DomainToken");
         public static string DomainWeChat = GetConfig("DomainWeChat");
-        public static string Domain = GetConfig("Domain");
 
         public static string GetConfig(string key)
         {

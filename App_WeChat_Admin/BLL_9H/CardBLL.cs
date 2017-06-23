@@ -125,7 +125,8 @@ namespace BLL_9H
                     }
                 };
 
-                string url = "https://api.weixin.qq.com/card/create?access_token=" + accessTokenDAL.Get(authorizerAppID);
+                string accessToken = accessTokenDAL.Get(authorizerAppID);
+                string url = "https://api.weixin.qq.com/card/create?access_token=" + accessToken;
 
                 LogHelper.Info("创建会员卡 url", url);
 
@@ -157,11 +158,12 @@ namespace BLL_9H
             }
         }
 
-        MemberCardModel GetModel(string authorizerAppID, string cardID)
+        public MemberCardModel GetModel(string authorizerAppID, string cardID)
         {
             try
             {
-                string url = "https://api.weixin.qq.com/card/get?access_token=" + accessTokenDAL.Get(authorizerAppID);
+                string accessToken = accessTokenDAL.Get(authorizerAppID);
+                string url = "https://api.weixin.qq.com/card/get?access_token=" + accessToken;
 
                 LogHelper.Info("查询卡券详情 url", url);
 
@@ -345,7 +347,8 @@ namespace BLL_9H
                     }
                 };
 
-                string url = "https://api.weixin.qq.com/card/update?access_token=" + accessTokenDAL.Get(authorizerAppID);
+                string accessToken = accessTokenDAL.Get(authorizerAppID);
+                string url = "https://api.weixin.qq.com/card/update?access_token=" + accessToken;
 
                 LogHelper.Info("更新会员卡 url", url);
 
@@ -374,6 +377,57 @@ namespace BLL_9H
             {
                 LogHelper.Error(ex);
                 return JsonConvert.SerializeObject(new RESTfulModel() { Code = (int)CodeEnum.系统异常, Msg = codeMsgDAL.GetByCode((int)CodeEnum.系统异常) });
+            }
+        }
+
+        public List<MemberCardModel> GetList(string authorizerAppID)
+        {
+            try
+            {
+                string accessToken = accessTokenDAL.Get(authorizerAppID);
+                string url = "https://api.weixin.qq.com/card/batchget?access_token=" + accessToken;
+
+                LogHelper.Info("批量查询卡券列表 url", url);
+
+                CardListGetReq req = new CardListGetReq()
+                {
+                    Offset = 0,
+                    Count = 10
+                };
+                string requestBody = JsonConvert.SerializeObject(req);
+
+                LogHelper.Info("批量查询卡券列表 requestBody", requestBody);
+
+                string responseBody = HttpHelper.Post(url, requestBody);
+
+                LogHelper.Info("批量查询卡券列表 responseBody", responseBody);
+
+                CardListGetResp resp = JsonConvert.DeserializeObject<CardListGetResp>(responseBody);
+
+                List<MemberCardModel> memberCardModelList = new List<MemberCardModel>();
+
+                if (resp.ErrCode == 0)
+                {
+                    List<string> cardIDList = resp.CardIDList;
+                    if (cardIDList.Any())
+                    {
+                        foreach (var cardID in cardIDList)
+                        {
+                            MemberCardModel memberCardModel = GetModel(authorizerAppID, cardID);
+                            if (memberCardModel != null)
+                            {
+                                memberCardModelList.Add(memberCardModel);
+                            }
+                        }
+                    }
+                }
+
+                return memberCardModelList;
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Error(ex);
+                return null;
             }
         }
 

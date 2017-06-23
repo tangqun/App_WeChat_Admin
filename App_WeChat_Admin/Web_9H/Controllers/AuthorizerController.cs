@@ -6,13 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Web_9H.Areas.App.Controllers
+namespace Web_9H.Controllers
 {
-    public class AuthorizerController : Controller
+    public class AuthorizerController : BaseController
     {
         private IAuthorizerInfoBLL authorizerInfoBLL = new AuthorizerInfoBLL();
 
-        public ActionResult List(int id)
+        public ActionResult List(string id)
         {
             return View(authorizerInfoBLL.GetList(id));
         }

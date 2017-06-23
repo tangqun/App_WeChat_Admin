@@ -10,7 +10,7 @@ using Webdiyer.WebControls.Mvc;
 
 namespace Web_9H.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private IUserInfoBLL userInfoBLL = new UserInfoBLL();
 
