@@ -11,6 +11,8 @@ namespace Helper_9H
     {
         public static string ConnStr = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
 
+        public static string ComponentAppID = GetConfig("ComponentAppID");
+        public static string ComponentAppSecret = GetConfig("ComponentAppSecret");
         public static string Salt = GetConfig("Salt");
         public static string DomainToken = GetConfig("DomainToken");
         public static string DomainWeChat = GetConfig("DomainWeChat");

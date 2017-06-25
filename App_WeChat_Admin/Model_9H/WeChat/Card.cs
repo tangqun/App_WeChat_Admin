@@ -8,9 +8,9 @@ namespace Model_9H
 {
     public class Card
     {
-        [JsonProperty("card_id")]
+        [JsonProperty("card_id", NullValueHandling = NullValueHandling.Ignore)]
         public string CardID { get; set; }
-        [JsonProperty("card_type")]
+        [JsonProperty("card_type", NullValueHandling = NullValueHandling.Ignore)]
         public string CardType { get; set; }
         [JsonProperty("member_card")]
         public MemberCard MemberCard { get; set; }

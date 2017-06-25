@@ -50,7 +50,7 @@ namespace BLL_9H
                             UseAllLocations = true,
 
                             CenterTitle = "会员买单",
-                            CenterSubTitle = "买单立享" + model.Discount + "折，更有积分相送",
+                            //CenterSubTitle = "买单立享" + model.Discount + "折，更有积分相送",
                             CenterUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "membercard/gopay"
 
                             // custom_url_name
@@ -84,13 +84,13 @@ namespace BLL_9H
                         // 是否支持储值
                         SupplyBalance = false,
 
-                        CustomField1 = new CustomField()
-                        {
-                            // 不行就用 Name , 积分变动触发 is_notify_bonus
-                            // 其他两个触发 is_notify_custom_field2 is_notify_custom_field3
-                            NameType = "FIELD_NAME_TYPE_STAMP",
-                            Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "bonus"
-                        },
+                        //CustomField1 = new CustomField()
+                        //{
+                        //    // 不行就用 Name , 积分变动触发 is_notify_bonus
+                        //    // 其他两个触发 is_notify_custom_field2 is_notify_custom_field3
+                        //    NameType = "FIELD_NAME_TYPE_STAMP",
+                        //    Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "bonus"
+                        //},
                         CustomField2 = new CustomField()
                         {
                             NameType = "FIELD_NAME_TYPE_LEVEL",
@@ -125,8 +125,8 @@ namespace BLL_9H
                     }
                 };
 
-                string accessToken = accessTokenDAL.Get(authorizerAppID);
-                string url = "https://api.weixin.qq.com/card/create?access_token=" + accessToken;
+                AuthorizationInfoModel authorizationInfoModel = accessTokenDAL.Get(authorizerAppID);
+                string url = "https://api.weixin.qq.com/card/create?access_token=" + authorizationInfoModel.AuthorizerAccessToken;
 
                 LogHelper.Info("创建会员卡 url", url);
 
@@ -162,8 +162,8 @@ namespace BLL_9H
         {
             try
             {
-                string accessToken = accessTokenDAL.Get(authorizerAppID);
-                string url = "https://api.weixin.qq.com/card/get?access_token=" + accessToken;
+                AuthorizationInfoModel authorizationInfoModel = accessTokenDAL.Get(authorizerAppID);
+                string url = "https://api.weixin.qq.com/card/get?access_token=" + authorizationInfoModel.AuthorizerAccessToken;
 
                 LogHelper.Info("查询卡券详情 url", url);
 
@@ -272,7 +272,7 @@ namespace BLL_9H
                             UseAllLocations = true,
 
                             CenterTitle = "会员买单",
-                            CenterSubTitle = "买单立享" + model.Discount + "折，更有积分相送",
+                            //CenterSubTitle = "买单立享" + model.Discount + "折，更有积分相送",
                             CenterUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "membercard/gopay"
 
                             // custom_url_name
@@ -306,13 +306,13 @@ namespace BLL_9H
                         // 是否支持储值
                         SupplyBalance = false,
 
-                        CustomField1 = new CustomField()
-                        {
-                            // 不行就用 Name , 积分变动触发 is_notify_bonus
-                            // 其他两个触发 is_notify_custom_field2 is_notify_custom_field3
-                            NameType = "FIELD_NAME_TYPE_STAMP",
-                            Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "bonus"
-                        },
+                        //CustomField1 = new CustomField()
+                        //{
+                        //    // 不行就用 Name , 积分变动触发 is_notify_bonus
+                        //    // 其他两个触发 is_notify_custom_field2 is_notify_custom_field3
+                        //    NameType = "FIELD_NAME_TYPE_STAMP",
+                        //    Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "bonus"
+                        //},
                         CustomField2 = new CustomField()
                         {
                             NameType = "FIELD_NAME_TYPE_LEVEL",
@@ -347,8 +347,8 @@ namespace BLL_9H
                     }
                 };
 
-                string accessToken = accessTokenDAL.Get(authorizerAppID);
-                string url = "https://api.weixin.qq.com/card/update?access_token=" + accessToken;
+                AuthorizationInfoModel authorizationInfoModel = accessTokenDAL.Get(authorizerAppID);
+                string url = "https://api.weixin.qq.com/card/update?access_token=" + authorizationInfoModel.AuthorizerAccessToken;
 
                 LogHelper.Info("更新会员卡 url", url);
 
@@ -384,8 +384,8 @@ namespace BLL_9H
         {
             try
             {
-                string accessToken = accessTokenDAL.Get(authorizerAppID);
-                string url = "https://api.weixin.qq.com/card/batchget?access_token=" + accessToken;
+                AuthorizationInfoModel authorizationInfoModel = accessTokenDAL.Get(authorizerAppID);
+                string url = "https://api.weixin.qq.com/card/batchget?access_token=" + authorizationInfoModel.AuthorizerAccessToken;
 
                 LogHelper.Info("批量查询卡券列表 url", url);
 

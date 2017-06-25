@@ -14,7 +14,7 @@ namespace Web_9H.Areas.App.Controllers
 
         public ActionResult UploadIMG()
         {
-            return Content(mediaBLL.UploadIMG(CurrentAuthorizer.AuthorizerAppID, Request.Files));
+            return Content(mediaBLL.UploadIMG(CurrentAuthorizer.AuthorizerAppID, Request.Files), "application/json");
         }
     }
 }

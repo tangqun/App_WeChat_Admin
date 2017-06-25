@@ -28,8 +28,8 @@ namespace BLL_9H
                     float mbSize = (float)file.ContentLength / 1048576;
                     if (mbSize <= 1)
                     {
-                        string accessToken = accessTokenDAL.Get(authorizerAppID);
-                        string url = "https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=" + accessToken;
+                        AuthorizationInfoModel authorizationInfoModel = accessTokenDAL.Get(authorizerAppID);
+                        string url = "https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=" + authorizationInfoModel.AuthorizerAccessToken;
 
                         LogHelper.Info("上传图片 url", url);
 

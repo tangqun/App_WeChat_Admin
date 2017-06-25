@@ -47,8 +47,8 @@ namespace Model_9H
         public float Discount { get; set; }
 
         // 会员类目
-        [JsonProperty("custom_field1")]
-        public CustomField CustomField1 { get; set; }
+        //[JsonProperty("custom_field1")]
+        //public CustomField CustomField1 { get; set; }
         [JsonProperty("custom_field2")]
         public CustomField CustomField2 { get; set; }
         [JsonProperty("custom_field3")]

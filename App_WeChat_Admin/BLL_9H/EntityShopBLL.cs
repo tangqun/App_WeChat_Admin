@@ -21,8 +21,8 @@ namespace BLL_9H
         {
             try
             {
-                string accessToken = accessTokenDAL.Get(authorizerAppID);
-                string url = "https://api.weixin.qq.com/cgi-bin/poi/getpoilist?access_token=" + accessToken;
+                AuthorizationInfoModel authorizationInfoModel = accessTokenDAL.Get(authorizerAppID);
+                string url = "https://api.weixin.qq.com/cgi-bin/poi/getpoilist?access_token=" + authorizationInfoModel.AuthorizerAccessToken;
 
                 LogHelper.Info("3.5查询门店列表 url", url);
 
@@ -91,8 +91,8 @@ namespace BLL_9H
         {
             try
             {
-                string accessToken = accessTokenDAL.Get(authorizerAppID);
-                string url = "http://api.weixin.qq.com/cgi-bin/poi/getpoi?access_token=" + accessToken;
+                AuthorizationInfoModel authorizationInfoModel = accessTokenDAL.Get(authorizerAppID);
+                string url = "http://api.weixin.qq.com/cgi-bin/poi/getpoi?access_token=" + authorizationInfoModel.AuthorizerAccessToken;
 
                 LogHelper.Info("3.4查询门店信息 url", url);
 

@@ -8,13 +8,13 @@ namespace Model_9H
 {
     public class MemberCardBaseInfo
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public string ID { get; set; }
         [JsonProperty("logo_url")]
         public string LogoUrl { get; set; }
         [JsonProperty("code_type")]
         public string CodeType { get; set; }
-        [JsonProperty("brand_name")]
+        [JsonProperty("brand_name", NullValueHandling = NullValueHandling.Ignore)]
         public string BrandName { get; set; }
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -37,8 +37,6 @@ namespace Model_9H
         // 会员卡支付按钮
         [JsonProperty("center_title")]
         public string CenterTitle { get; set; }
-        [JsonProperty("center_sub_title")]
-        public string CenterSubTitle { get; set; }
         [JsonProperty("center_url")]
         public string CenterUrl { get; set; }
 
@@ -47,14 +45,14 @@ namespace Model_9H
         public int GetLimit { get; set; }
         [JsonProperty("can_share")]
         public bool CanShare { get; set; }
-        [JsonProperty("can_give_friend ")]
+        [JsonProperty("can_give_friend")]
         public bool CanGiveFriend { get; set; }
 
 
         [JsonProperty("date_info")]
         public DataInfo DateInfo { get; set; }
         // 库存
-        [JsonProperty("sku")]
+        [JsonProperty("sku", NullValueHandling = NullValueHandling.Ignore)]
         public Sku Sku { get; set; }
     }
 }
