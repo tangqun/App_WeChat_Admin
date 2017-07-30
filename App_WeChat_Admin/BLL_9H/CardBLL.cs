@@ -18,6 +18,11 @@ namespace BLL_9H
         private ICodeMsgDAL codeMsgDAL = new CodeMsgDAL();
         private ICardInfoDAL cardInfoDAL = new CardInfoDAL();
 
+        /// <summary>
+        /// 1.仅部分类目可创建会员卡，非开放类目将返回错误码，类目明细见会员卡公告https://mp.weixin.qq.com/cgi-bin/announce?action=getannouncement&key=1461052555&version=1&lang=zh_CN&platform=2
+        /// 2.创建会员卡时，需设置会员卡激活后呈现的信息类目，目前支持积分、余额、等级、优惠券、里程、印花、成就、折扣等类型，微信6.2以上版本显示会员信息类目的上限为3个，即创建时类目字段supply_bonus 、supply_balance、 custom_field1、custom_field2 、custom_field3最多选择三项填写。
+        /// 3.创建卡券时，开发者填入的时间戳须注意时间戳溢出时间，设置的时间戳须早于2038年1月19日，若要设置更久的有效期，可以选择永久有效类型的有效期。
+        /// </summary>
         public string Create(string authorizerAppID, MemberCardModel model)
         {
             try
@@ -46,7 +51,7 @@ namespace BLL_9H
                             CanGiveFriend = false,
                             CanShare = false,
 
-                            UseCustomCode = true,
+                            UseCustomCode = false,
                             UseAllLocations = true,
 
                             CenterTitle = "会员买单",
@@ -268,7 +273,8 @@ namespace BLL_9H
                             CanGiveFriend = false,
                             CanShare = false,
 
-                            UseCustomCode = true,
+                            // 不适用自定义Code
+                            UseCustomCode = false,
                             UseAllLocations = true,
 
                             CenterTitle = "会员买单",
@@ -315,11 +321,13 @@ namespace BLL_9H
                         //},
                         CustomField2 = new CustomField()
                         {
+                            // 等级
                             NameType = "FIELD_NAME_TYPE_LEVEL",
                             Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "level"
                         },
                         CustomField3 = new CustomField()
                         {
+                            // 优惠券
                             NameType = "FIELD_NAME_TYPE_COUPON",
                             Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "coupon"
                         },
