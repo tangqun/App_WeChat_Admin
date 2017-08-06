@@ -56,7 +56,7 @@ namespace BLL_9H
 
                             CenterTitle = "会员买单",
                             //CenterSubTitle = "买单立享" + model.Discount + "折，更有积分相送",
-                            CenterUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "membercard/gopay"
+                            CenterUrl = "http://" + authorizerAppID + "." + ConfigHelper.DomainWeChat + "/order/create"
 
                             // custom_url_name
                             // custom_url
@@ -84,7 +84,7 @@ namespace BLL_9H
                         AutoActivate = false,
                         WXActivate = false,
                         // 激活页面
-                        ActivateUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "membercard/activate",
+                        ActivateUrl = "http://" + authorizerAppID + "." + ConfigHelper.DomainWeChat + "/membercard/activate",
 
                         // 是否支持储值
                         SupplyBalance = false,
@@ -98,13 +98,13 @@ namespace BLL_9H
                         //},
                         CustomField2 = new CustomField()
                         {
-                            NameType = "FIELD_NAME_TYPE_LEVEL",
-                            Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "level"
+                            NameType = "FIELD_NAME_TYPE_COUPON",
+                            Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "coupon"
                         },
                         CustomField3 = new CustomField()
                         {
-                            NameType = "FIELD_NAME_TYPE_COUPON",
-                            Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "coupon"
+                            NameType = "FIELD_NAME_TYPE_LEVEL",
+                            Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "level"
                         },
 
                         // 积分相关
@@ -115,15 +115,17 @@ namespace BLL_9H
                             CostMoneyUnit = model.CostMoneyUnit,
                             // 送
                             IncreaseBonus = model.IncreaseBonus,
+                            // 单次获得上限
                             MaxIncreaseBonus = model.MaxIncreaseBonus,
+                            // 初始积分
                             InitIncreaseBonus = model.InitIncreaseBonus,
-                            // 用
+                            // 用积分
                             CostBonusUnit = model.CostBonusUnit,
-                            // 抵
+                            // 抵现金
                             ReduceMoney = model.ReduceMoney,
-                            // 抵扣条件，满
+                            // 抵扣条件，满xx元（这里以分为单位）可用
                             LeastMoneyToUseBonus = model.LeastMoneyToUseBonus,
-                            // 抵扣条件，抵
+                            // 抵扣条件，单笔最多使用xx积分。     
                             MaxReduceBonus = model.MaxReduceBonus
                         },
                         Discount = model.Discount
@@ -279,7 +281,7 @@ namespace BLL_9H
 
                             CenterTitle = "会员买单",
                             //CenterSubTitle = "买单立享" + model.Discount + "折，更有积分相送",
-                            CenterUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "membercard/gopay"
+                            CenterUrl = "http://" + authorizerAppID + "." + ConfigHelper.DomainWeChat + "/membercard/gopay"
 
                             // custom_url_name
                             // custom_url
@@ -307,7 +309,7 @@ namespace BLL_9H
                         AutoActivate = false,
                         WXActivate = false,
                         // 激活页面
-                        ActivateUrl = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "membercard/activate",
+                        ActivateUrl = "http://" + authorizerAppID + "." + ConfigHelper.DomainWeChat + "/membercard/activate",
 
                         // 是否支持储值
                         SupplyBalance = false,
@@ -321,15 +323,15 @@ namespace BLL_9H
                         //},
                         CustomField2 = new CustomField()
                         {
-                            // 等级
-                            NameType = "FIELD_NAME_TYPE_LEVEL",
-                            Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "level"
-                        },
-                        CustomField3 = new CustomField()
-                        {
                             // 优惠券
                             NameType = "FIELD_NAME_TYPE_COUPON",
                             Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "coupon"
+                        },
+                        CustomField3 = new CustomField()
+                        {
+                            // 等级
+                            NameType = "FIELD_NAME_TYPE_LEVEL",
+                            Url = string.Format(ConfigHelper.DomainWeChat, authorizerAppID) + "level"
                         },
 
                         // 积分相关
@@ -340,15 +342,17 @@ namespace BLL_9H
                             CostMoneyUnit = model.CostMoneyUnit,
                             // 送
                             IncreaseBonus = model.IncreaseBonus,
+                            // 单次获得上限
                             MaxIncreaseBonus = model.MaxIncreaseBonus,
+                            // 初始积分
                             InitIncreaseBonus = model.InitIncreaseBonus,
-                            // 用
+                            // 用积分
                             CostBonusUnit = model.CostBonusUnit,
-                            // 抵
+                            // 抵现金
                             ReduceMoney = model.ReduceMoney,
-                            // 抵扣条件，满
+                            // 抵扣条件，满xx元（这里以分为单位）可用
                             LeastMoneyToUseBonus = model.LeastMoneyToUseBonus,
-                            // 抵扣条件，抵
+                            // 抵扣条件，单笔最多使用xx积分。     
                             MaxReduceBonus = model.MaxReduceBonus
                         },
                         Discount = model.Discount

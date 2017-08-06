@@ -28,22 +28,24 @@ namespace MemberCardTest
                             CodeType = "CODE_TYPE_QRCODE",
                             Title = "现代纯K量贩式KTV",
                             Color = "Color010",
-                            Notice = "使用时向服务员出示此券",
+                            Notice = "使用时向服务员出示此卡",
                             ServicePhone = "15210470906",
-                            Description = "1.消费时请出示会员卡 2.会员余额不可提现 3.会员积分可以兑换相应的奖品或者优惠 3.具体积分使用规则参考商家制定的积分政策",
+                            Description = "1.消费时请出示会员卡 2.会员余额不可提现 3.会员积分可以兑换相应的奖品或者优惠 4.具体积分使用规则参考商家制定的积分政策",
 
                             DateInfo = new DataInfo() { Type = "DATE_TYPE_PERMANENT" },
+                            // 一亿
                             Sku = new Sku() { Quantity = 100000000 },
 
                             GetLimit = 1,
                             CanGiveFriend = false,
                             CanShare = false,
 
+                            // 不使用自定义Code，卡面显示手机号
                             UseCustomCode = false,
                             UseAllLocations = true,
 
                             CenterTitle = "会员买单",
-                            CenterUrl = "http://wxab6d7123cc1125f5.wx.smartyancheng.com/membercard/gopay"
+                            CenterUrl = "http://wxab6d7123cc1125f5.wx.smartyancheng.com/order/create"
 
                             // custom_url_name
                             // custom_url
@@ -85,13 +87,15 @@ namespace MemberCardTest
                         //},
                         CustomField2 = new CustomField()
                         {
-                            NameType = "FIELD_NAME_TYPE_LEVEL",
-                            Url = "http://wxab6d7123cc1125f5.wx.smartyancheng.com/level"
+                            // 优惠券
+                            NameType = "FIELD_NAME_TYPE_COUPON",
+                            Url = "http://wxab6d7123cc1125f5.wx.smartyancheng.com/coupon"
                         },
                         CustomField3 = new CustomField()
                         {
-                            NameType = "FIELD_NAME_TYPE_COUPON",
-                            Url = "http://wxab6d7123cc1125f5.wx.smartyancheng.com/coupon"
+                            // 等级
+                            NameType = "FIELD_NAME_TYPE_LEVEL",
+                            Url = "http://wxab6d7123cc1125f5.wx.smartyancheng.com/level"
                         },
 
                         // 积分相关
@@ -102,15 +106,17 @@ namespace MemberCardTest
                             CostMoneyUnit = 1,
                             // 送
                             IncreaseBonus = 1,
+                            // 单次获得上限
                             //MaxIncreaseBonus = 0,
+                            // 初始积分
                             InitIncreaseBonus = 20,
-                            // 用
+                            // 用积分
                             CostBonusUnit = 100,
-                            // 抵
+                            // 抵现金
                             ReduceMoney = 100,
-                            // 抵扣条件，满
+                            // 抵扣条件，满xx元（这里以分为单位）可用
                             //LeastMoneyToUseBonus = 0,
-                            // 抵扣条件，抵
+                            // 抵扣条件，单笔最多使用xx积分。     
                             //MaxReduceBonus = 0
                         },
                         Discount = 9.9F
@@ -118,11 +124,11 @@ namespace MemberCardTest
                 }
             };
 
-            string url = "https://api.weixin.qq.com/card/create?access_token=" + "-MdWNMw0epZqdaKLruAs8iy4yFh1w1jq9ArdIfAT4x-XmDMhZc3jWqVBtJ_TH3khQ7sFq7nR41kC4YvvyfopZ6To3DxLTCXJBG7pgOeMJz-JVGJyhug9w4YLm3QhFrS9WSQgAFDIEC";
+            string url = "https://api.weixin.qq.com/card/create?access_token=" + "_NQAGzWMDM_T086kzEUtQPbgNGcE8tY_PZW_cgDeCmnO70kyFpar7hm8M7Ed3_bYITZUODkjh7L5UVJ6HuutSGMAA7V1GCmDujGlHj1tXmWxvLSvnxxQnZGuB_xm_D7xBWNaAJDOJA";
 
             string requestBody = JsonConvert.SerializeObject(req);
 
-            string responseBody = HttpHelper.Post(url, requestBody);
+            //string responseBody = HttpHelper.Post(url, requestBody);
 
 
             #region 更新

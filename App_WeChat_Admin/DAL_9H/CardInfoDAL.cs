@@ -18,7 +18,7 @@ namespace DAL_9H
                                     (
                                      `authorizer_appid`,
                                      `card_id`,
-                                     `card_stat`,
+                                     `card_status`,
                                      `create_time`,
                                      `update_time`)
                         VALUES (@authorizer_appid,
